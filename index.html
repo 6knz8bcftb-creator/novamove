@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NOVAMOVE | Votre déménagement, notre priorité</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#18324b;background:#f5f7fa}
+header{background:#102d4c;color:white;padding:22px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:27px;font-weight:bold;letter-spacing:1px}
+.logo span{color:#ff8b32}
+.hero{padding:75px 8%;background:linear-gradient(120deg,#102d4c,#205b82);color:white;text-align:center}
+.hero h1{font-size:42px;margin:0 0 15px}
+.hero p{font-size:18px;line-height:1.6}
+section{padding:45px 8%;max-width:1000px;margin:auto}
+h2{color:#164b73}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.service,.formbox{background:white;padding:22px;border-radius:12px;box-shadow:0 3px 14px #0000000d}
+label{display:block;margin:14px 0 6px;font-weight:bold}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccd5df;border-radius:7px;font-size:16px}
+button{background:#f5822a;color:white;border:0;padding:14px 22px;border-radius:7px;font-size:16px;font-weight:bold;margin-top:18px;width:100%;cursor:pointer}
+footer{text-align:center;background:#102d4c;color:white;padding:25px}
+.small{font-size:13px;color:#64748b;line-height:1.5}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">NOVA<span>MOVE</span></div>
+  <div>France</div>
+</header>
+
+<div class="hero">
+  <h1>Votre déménagement, notre priorité.</h1>
+  <p>Vous préparez un déménagement ?<br>
+  NOVAMOVE vous met en relation avec des professionnels partenaires.</p>
+  <a href="#devis" style="display:inline-block;background:#f5822a;color:white;padding:14px 25px;border-radius:7px;text-decoration:none;font-weight:bold">Demander un devis</a>
+</div>
+
+<section>
+  <h2>Nos services</h2>
+  <div class="services">
+    <div class="service"><h3>🏠 Particuliers</h3><p>Organisez votre projet de déménagement en toute simplicité.</p></div>
+    <div class="service"><h3>🏢 Entreprises</h3><p>Une mise en relation avec des professionnels pour vos transferts.</p></div>
+    <div class="service"><h3>📦 Partenaires</h3><p>Nous recherchons des professionnels du déménagement partout en France.</p></div>
+  </div>
+</section>
+
+<section id="devis">
+  <div class="formbox">
+    <h2>Demander un devis</h2>
+    <form id="quoteForm">
+      <label>Ville de départ</label>
+      <input name="depart" required placeholder="Ex. : Paris">
+      <label>Ville d'arrivée</label>
+      <input name="arrivee" required placeholder="Ex. : Lyon">
+      <label>Date souhaitée</label>
+      <input name="date" type="date">
+      <label>Type de logement</label>
+      <select name="logement">
+        <option>Studio</option><option>Appartement</option>
+        <option>Maison</option><option>Bureau / Entreprise</option>
+      </select>
+      <label>Volume estimé</label>
+      <select name="volume">
+        <option>Petit déménagement</option>
+        <option>Moyen déménagement</option>
+        <option>Grand déménagement</option>
+        <option>À déterminer</option>
+      </select>
+      <label>Nom et prénom</label>
+      <input name="nom" required>
+      <label>Adresse e-mail</label>
+      <input name="email" type="email" required>
+      <label>Informations complémentaires</label>
+      <textarea name="details" rows="4"></textarea>
+      <button type="submit">Préparer ma demande</button>
+      <p class="small">Le bouton prépare un e-mail que vous devrez envoyer depuis votre messagerie. Vos informations ne sont pas transmises automatiquement.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <strong>NOVAMOVE</strong><br>
+  Votre déménagement, notre priorité.<br>
+  Contact : beneniejoellice@icloud.com
+</footer>
+
+<script>
+document.getElementById("quoteForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const d=new FormData(this);
+  const body=[
+    "Nouvelle demande NOVAMOVE",
+    "Départ : "+d.get("depart"),
+    "Arrivée : "+d.get("arrivee"),
+    "Date : "+d.get("date"),
+    "Logement : "+d.get("logement"),
+    "Volume : "+d.get("volume"),
+    "Nom : "+d.get("nom"),
+    "E-mail client : "+d.get("email"),
+    "Détails : "+d.get("details")
+  ].join("\n");
+  window.location.href="mailto:beneniejoellice@icloud.com?subject="+encodeURIComponent("Demande de devis NOVAMOVE")+"&body="+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>
